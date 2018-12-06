@@ -2,7 +2,7 @@
 
 Take Home Test
 
-##About the stack of technologies
+## About the stack of technologies
 
 I have chosen SpringBoot because it is much easier to configure and plays well with other tech stacks. I have also used a REST API and SpringData JPA with an H2 database for future expansion of the project.
 
