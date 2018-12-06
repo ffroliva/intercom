@@ -1,7 +1,8 @@
 package br.com.ffroliva.intercom.repository;
 
-import java.util.List;
 import br.com.ffroliva.intercom.model.Customer;
+
+import java.util.List;
 
 public interface CustomerRepository {
 

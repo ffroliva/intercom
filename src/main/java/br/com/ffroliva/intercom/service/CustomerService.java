@@ -1,16 +1,16 @@
 package br.com.ffroliva.intercom.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import br.com.ffroliva.intercom.model.Customer;
 import br.com.ffroliva.intercom.model.DistanceUnitEnum;
 import br.com.ffroliva.intercom.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import static br.com.ffroliva.intercom.util.Constants.*;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static br.com.ffroliva.intercom.util.Constants.DUBLIN_OFFICE_LATITUDE;
+import static br.com.ffroliva.intercom.util.Constants.DUBLIN_OFFICE_LONGITUDE;
 
 @Service
 public class CustomerService {

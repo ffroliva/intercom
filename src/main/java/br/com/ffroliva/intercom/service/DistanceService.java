@@ -1,8 +1,7 @@
 package br.com.ffroliva.intercom.service;
 
-import org.springframework.stereotype.Service;
-
 import br.com.ffroliva.intercom.model.DistanceUnitEnum;
+import org.springframework.stereotype.Service;
 
 @Service
 public class DistanceService {

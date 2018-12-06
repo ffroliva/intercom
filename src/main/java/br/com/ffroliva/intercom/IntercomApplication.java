@@ -1,16 +1,15 @@
 package br.com.ffroliva.intercom;
 
-import java.util.List;
-
+import br.com.ffroliva.intercom.model.Customer;
+import br.com.ffroliva.intercom.model.DistanceUnitEnum;
+import br.com.ffroliva.intercom.service.CustomerService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.ffroliva.intercom.model.Customer;
-import br.com.ffroliva.intercom.model.DistanceUnitEnum;
-import br.com.ffroliva.intercom.service.CustomerService;
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 @SpringBootApplication
 @Slf4j

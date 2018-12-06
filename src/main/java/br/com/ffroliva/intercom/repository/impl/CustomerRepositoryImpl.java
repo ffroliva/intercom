@@ -1,8 +1,11 @@
 package br.com.ffroliva.intercom.repository.impl;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import br.com.ffroliva.intercom.model.Customer;
+import br.com.ffroliva.intercom.repository.CustomerRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Repository;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -12,17 +15,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.stereotype.Repository;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import br.com.ffroliva.intercom.model.Customer;
-import br.com.ffroliva.intercom.repository.CustomerRepository;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Repository
