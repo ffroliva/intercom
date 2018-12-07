@@ -5,6 +5,7 @@ import lombok.*;
 
 /**
  * Classe representing the customer's data model.
+ *
  * @author Flavio Oliva <a href="ffroliva@gmail.com">ffroliva@gmail.com</>
  */
 @Data
@@ -13,9 +14,9 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @Builder
-public class Customer implements Comparable<Customer>, GeoLocation {
+public class Customer implements Comparable<Customer> {
 
-	@JsonProperty("user_id")
+    @JsonProperty("user_id")
     private Integer id;
     private String name;
     private double latitude;
@@ -23,9 +24,9 @@ public class Customer implements Comparable<Customer>, GeoLocation {
 
     @Override
     public int compareTo(Customer o) {
-        if(this.id < o.getId()){
+        if (this.id < o.getId()) {
             return -1;
-        } else if(this.id > o.getId()) {
+        } else if (this.id > o.getId()) {
             return 1;
         }
         return 0;

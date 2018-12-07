@@ -68,11 +68,11 @@ public class DistanceServiceStepDefs {
 
     @Then("^it should be less or equal (\\d+) km distance from intercom dublin office$")
     public void itShouldBeUnderKmDistanceFromIntercomDublinOffice(int distance) {
-        Assert.assertTrue( distanceInKm <= distance);
+        Assert.assertTrue(distanceInKm <= distance);
     }
 
     @Then("^it should be greater then (\\d+) km distance from intercom dublin office$")
     public void itShouldBeGreaterThenKmDistanceFromIntercomDublinOffice(int distance) {
-        Assert.assertTrue( distanceInKm > distance);
+        Assert.assertTrue(distanceInKm > distance);
     }
 }

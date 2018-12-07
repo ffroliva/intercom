@@ -11,12 +11,12 @@ public class MvcWebApplicationInitializer extends AbstractAnnotationConfigDispat
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] { MvcWebConfig.class };
+        return new Class[]{MvcWebConfig.class};
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] { "/" };
+        return new String[]{"/"};
     }
 
 }

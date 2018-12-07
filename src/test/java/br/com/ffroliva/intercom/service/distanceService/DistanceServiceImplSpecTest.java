@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 @CucumberOptions(
         features = "src/test/resources/br/com/ffroliva/intercom/service/distanceService.feature",
         plugin = {"pretty", "html:target/cucumber/distanceService"}
-        )
-@ContextConfiguration(classes= AppConfiguration.class)
-public class DistanceServiceImplSpecTest {}
+)
+@ContextConfiguration(classes = AppConfiguration.class)
+public class DistanceServiceImplSpecTest {
+}

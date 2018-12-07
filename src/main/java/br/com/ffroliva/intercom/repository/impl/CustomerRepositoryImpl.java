@@ -18,50 +18,52 @@ import java.util.List;
 
 /**
  * Repository responsable for manipulating the Customer object.
+ * @author Flavio Oliva <a href="mailto:ffroliva@gmail.com">ffroliva@gmail.com</a>
  */
 @Slf4j
 @Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
-	private static final ObjectMapper MAPPER = new ObjectMapper();
+    private static final ObjectMapper MAPPER = new ObjectMapper();
 
-	/**
-	 * Fetch all the customers from the file JSON file customers.txt
-	 * @return a list of customers.
-	 */
-	@Override
-    public List<Customer> findCustomers(){
-		List<Customer> customers = new ArrayList<>();
-		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-		URL url = classloader.getResource("customers.txt");
-		Path path;
-		try {
-			path = Paths.get(url.toURI());
-			List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-			for (String line : lines) {
-				customers.add(convertJsonFileToCustomers(line));
-			}
-			return customers;
-		} catch (URISyntaxException | IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-
-		
-
+    /**
+     * Convert a string in JSON format to a Customer entity.
+     *
+     * @param line in JSON format.
+     * @return a customer.
+     */
+    private static Customer convertJsonFileToCustomers(String line) {
+        try {
+            return MAPPER.readValue(line, Customer.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-	/**
-	 * Convert a string in JSON format to a Customer entity.
- 	 * @param line in JSON format.
-	 * @return a customer.
-	 */
-	private static Customer convertJsonFileToCustomers(String line) {
-		try {
-			return MAPPER.readValue(line, Customer.class);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    /**
+     * Fetch all the customers from the file JSON file customers.txt
+     *
+     * @return a list of customers.
+     */
+    @Override
+    public List<Customer> findCustomers() {
+        List<Customer> customers = new ArrayList<>();
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource("customers.txt");
+        Path path;
+        try {
+            path = Paths.get(url.toURI());
+            List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+            for (String line : lines) {
+                customers.add(convertJsonFileToCustomers(line));
+            }
+            return customers;
+        } catch (URISyntaxException | IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+
+    }
 
 }

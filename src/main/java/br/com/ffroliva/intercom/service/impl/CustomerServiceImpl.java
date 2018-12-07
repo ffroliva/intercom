@@ -17,54 +17,57 @@ import static br.com.ffroliva.intercom.utils.Constants.DUBLIN_OFFICE_LONGITUDE;
 
 /**
  * Services related to Customer entity.
+ * @author Flavio Oliva <a href="mailto:ffroliva@gmail.com">ffroliva@gmail.com</a>
  */
 @Service
 public class CustomerServiceImpl implements CustomerService {
-	
-	@Autowired
-	private CustomerRepository customerRepository;
-	
-	@Autowired
-	private DistanceServiceImpl distanceService;
 
-	/**
-	 * @see br.com.ffroliva.intercom.service.DistanceService#calculateDistance
-	 */
-	public List<CustomerDto> findCustomerWithinDistance(List<Customer> customers,
-														double distance,
-														DistanceUnitEnum unit) {
-		return customers
-		.stream()
-		.filter(c -> isCustumerWithinDistanceRangeClosed(c,unit,distance))
-		.sorted()
-		.map(CustomerConverter::entityToDto)
-		.collect(Collectors.toList());
-	}
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private DistanceServiceImpl distanceService;
+
+    /**
+     * @see br.com.ffroliva.intercom.service.DistanceService#calculateDistance
+     */
+    public List<CustomerDto> findCustomerWithinDistance(List<Customer> customers,
+                                                        double distance,
+                                                        DistanceUnitEnum unit) {
+        return customers
+                .stream()
+                .filter(c -> isCustumerWithinDistanceRangeClosed(c, unit, distance))
+                .sorted()
+                .map(CustomerConverter::entityToDto)
+                .collect(Collectors.toList());
+    }
 
 
-	public List<Customer> findCustomers(){
-		return customerRepository
-				.findCustomers()
-				.stream()
-				.sorted()
-				.collect(Collectors.toList());
-	}
+    public List<Customer> findCustomers() {
+        return customerRepository
+                .findCustomers()
+                .stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
 
-	/**
-	 * Check if a customer's geo location is within the give distance range.
-	 * @param customer whose geo location is desired to be compared
-	 * @param unit used to calculate the distance
-	 * @param distance to be compared with
-	 * @return true if the customer's geo location is smaller or equal then the distance compared
-	 */
-	private boolean isCustumerWithinDistanceRangeClosed(Customer customer, DistanceUnitEnum unit, double distance){
-		double customerDistance = distanceService
-				.calculateDistance(
-						DUBLIN_OFFICE_LATITUDE,
-						DUBLIN_OFFICE_LONGITUDE,
-						customer,
-						unit);
-		return customerDistance <= distance;
-	}
+    /**
+     * Check if a customer's geo location is within the give distance range.
+     *
+     * @param customer whose geo location is desired to be compared
+     * @param unit     used to calculate the distance
+     * @param distance to be compared with
+     * @return true if the customer's geo location is smaller or equal then the distance compared
+     */
+    private boolean isCustumerWithinDistanceRangeClosed(Customer customer, DistanceUnitEnum unit, double distance) {
+        double customerDistance = distanceService
+                .calculateDistance(
+                        DUBLIN_OFFICE_LATITUDE,
+                        DUBLIN_OFFICE_LONGITUDE,
+                        customer,
+                        unit);
+        return customerDistance <= distance;
+
+    }
 
 }

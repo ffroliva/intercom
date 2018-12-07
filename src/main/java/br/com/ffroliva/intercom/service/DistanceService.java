@@ -1,16 +1,17 @@
 package br.com.ffroliva.intercom.service;
 
 import br.com.ffroliva.intercom.model.Customer;
-import br.com.ffroliva.intercom.model.GeoLocation;
 import br.com.ffroliva.intercom.model.enums.DistanceUnitEnum;
 
 /**
  * Interface with methods related to distance.
+ * @author Flavio Oliva <a href="mailto:ffroliva@gmail.com">ffroliva@gmail.com</a>
  */
 public interface DistanceService {
 
     /**
      * Calculate the distance between two given points.
+     *
      * @param lat1 latitude of the first point.
      * @param lon1 longitude of the first point.
      * @param lat2 latitude of the second point.

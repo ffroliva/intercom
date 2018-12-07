@@ -1,16 +1,26 @@
 package br.com.ffroliva.intercom;
 
+import br.com.ffroliva.intercom.controller.CustomerController;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class IntercomApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Autowired
+    CustomerController customerController;
+
+    @Test
+    public void contextLoads() {
+        log.info("Executing metodo findCustomersWithinDistance");
+        log.info(customerController.findCustomersWithinDistance("11").toString());
+        log.info("End of execution of method findCustomersWithinDistance");
+    }
 
 }
