@@ -2,10 +2,9 @@ package br.com.ffroliva.intercom.service.distanceService;
 
 import br.com.ffroliva.intercom.AppConfiguration;
 import br.com.ffroliva.intercom.model.Customer;
-import br.com.ffroliva.intercom.model.DistanceUnitEnum;
-import br.com.ffroliva.intercom.service.DistanceService;
-import br.com.ffroliva.intercom.util.Constants;
-import cucumber.api.PendingException;
+import br.com.ffroliva.intercom.model.enums.DistanceUnitEnum;
+import br.com.ffroliva.intercom.service.impl.DistanceServiceImpl;
+import br.com.ffroliva.intercom.utils.Constants;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -26,7 +25,7 @@ public class DistanceServiceStepDefs {
     Customer.CustomerBuilder builder;
 
     @Autowired
-    DistanceService distanceService;
+    DistanceServiceImpl distanceService;
 
     private double distanceInKm;
 

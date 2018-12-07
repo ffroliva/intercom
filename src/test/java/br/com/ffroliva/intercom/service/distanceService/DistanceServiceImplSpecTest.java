@@ -12,4 +12,4 @@ import org.springframework.test.context.ContextConfiguration;
         plugin = {"pretty", "html:target/cucumber/distanceService"}
         )
 @ContextConfiguration(classes= AppConfiguration.class)
-public class DistanceServiceSpecTest {}
+public class DistanceServiceImplSpecTest {}

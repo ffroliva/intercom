@@ -1,41 +1,30 @@
 package br.com.ffroliva.intercom.service;
 
+import br.com.ffroliva.intercom.dto.CustomerDto;
 import br.com.ffroliva.intercom.model.Customer;
-import br.com.ffroliva.intercom.model.DistanceUnitEnum;
-import br.com.ffroliva.intercom.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import br.com.ffroliva.intercom.model.enums.DistanceUnitEnum;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static br.com.ffroliva.intercom.util.Constants.DUBLIN_OFFICE_LATITUDE;
-import static br.com.ffroliva.intercom.util.Constants.DUBLIN_OFFICE_LONGITUDE;
+/**
+ * Interface with methods related to the entity Customer.
+ */
+public interface CustomerService {
 
-@Service
-public class CustomerService {
-	
-	@Autowired
-	private CustomerRepository customerRepository;
-	
-	@Autowired
-	private DistanceService distanceService;
-	
-	public List<Customer> findCustomerWithinDistance(List<Customer> customers, double distance, DistanceUnitEnum unit) {
-		return customers
-		.stream()
-		.filter(c -> distanceService
-				.calculateDistance(
-						DUBLIN_OFFICE_LATITUDE, 
-						DUBLIN_OFFICE_LONGITUDE, 
-						c.getLatitude(), 
-						c.getLongitude(), 
-						unit) <= distance)
-		.collect(Collectors.toList());
-	}
-	
-	public List<Customer> findCustomers(){
-		return customerRepository.findCustomers();
-	}
+    /**
+     * Fetch all the customers.
+     * @return a list of customers.
+     */
+    public List<Customer> findCustomers();
 
+    /**
+     * Fetch all the customers within a given distance and unit.
+     * @param customers list of customers to be filtered.
+     * @param distance maximum range of the customer to be fetched
+     * @param unit Enum of the unit chosen unit.
+     * @return a list of customer's dto filtered by the given distance and it's unit.
+     */
+    public List<CustomerDto> findCustomerWithinDistance(List<Customer> customers,
+                                                        double distance,
+                                                        DistanceUnitEnum unit);
 }

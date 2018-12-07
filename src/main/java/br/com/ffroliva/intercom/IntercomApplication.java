@@ -1,7 +1,8 @@
 package br.com.ffroliva.intercom;
 
+import br.com.ffroliva.intercom.dto.CustomerDto;
 import br.com.ffroliva.intercom.model.Customer;
-import br.com.ffroliva.intercom.model.DistanceUnitEnum;
+import br.com.ffroliva.intercom.model.enums.DistanceUnitEnum;
 import br.com.ffroliva.intercom.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class IntercomApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		List<Customer> customers = customerService.findCustomers();
-		List<Customer> customersWithinDistance = customerService
+		List<CustomerDto> customersWithinDistance = customerService
 				.findCustomerWithinDistance(
 						customers, 
 						100, 

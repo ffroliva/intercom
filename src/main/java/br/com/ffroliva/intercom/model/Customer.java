@@ -3,42 +3,31 @@ package br.com.ffroliva.intercom.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-//@Data
+/**
+ * Classe representing the customer's data model.
+ * @author Flavio Oliva <a href="ffroliva@gmail.com">ffroliva@gmail.com</>
+ */
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Builder
-public class Customer {
+public class Customer implements Comparable<Customer>, GeoLocation {
 
 	@JsonProperty("user_id")
     private Integer id;
     private String name;
     private double latitude;
     private double longitude;
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public double getLatitude() {
-		return latitude;
-	}
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-	public double getLongitude() {
-		return longitude;
-	}
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-    
+
+    @Override
+    public int compareTo(Customer o) {
+        if(this.id < o.getId()){
+            return -1;
+        } else if(this.id > o.getId()) {
+            return 1;
+        }
+        return 0;
+    }
 }

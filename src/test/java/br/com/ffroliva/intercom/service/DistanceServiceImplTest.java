@@ -1,6 +1,7 @@
 package br.com.ffroliva.intercom.service;
 
-import br.com.ffroliva.intercom.model.DistanceUnitEnum;
+import br.com.ffroliva.intercom.model.enums.DistanceUnitEnum;
+import br.com.ffroliva.intercom.service.impl.DistanceServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @Slf4j
-public class DistanceServiceTest {
+public class DistanceServiceImplTest {
 
 	private static final double LATITUDE_1 = 32.9697;
 	private static final double LONGITUDE_1 =  -96.80322;
@@ -20,13 +21,13 @@ public class DistanceServiceTest {
 	private static final double LONGITUDE_2 =  -98.53506;
 
 	@Autowired
-	DistanceService distanceService;
+	DistanceServiceImpl distanceService;
 	
     @TestConfiguration
     static class DistanceServiceTestConfiguration {
           @Bean
-        public DistanceService distanceService() {
-            return new DistanceService();
+        public DistanceServiceImpl distanceService() {
+            return new DistanceServiceImpl();
         }
     }
 	

@@ -16,11 +16,18 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Repository responsable for manipulating the Customer object.
+ */
 @Slf4j
 @Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
 	private static final ObjectMapper MAPPER = new ObjectMapper();
-	
+
+	/**
+	 * Fetch all the customers from the file JSON file customers.txt
+	 * @return a list of customers.
+	 */
 	@Override
     public List<Customer> findCustomers(){
 		List<Customer> customers = new ArrayList<>();
@@ -42,7 +49,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		
 
     }
-		
+
+	/**
+	 * Convert a string in JSON format to a Customer entity.
+ 	 * @param line in JSON format.
+	 * @return a customer.
+	 */
 	private static Customer convertJsonFileToCustomers(String line) {
 		try {
 			return MAPPER.readValue(line, Customer.class);

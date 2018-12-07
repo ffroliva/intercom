@@ -1,4 +1,4 @@
-package br.com.ffroliva.intercom.util;
+package br.com.ffroliva.intercom.utils;
 
 public class Constants {
 	
