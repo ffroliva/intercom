@@ -18,8 +18,9 @@ import org.springframework.test.context.ContextConfiguration;
 /**
  * Behavior Driven Step Definions to test if users are within a distance.
  */
-@ContextConfiguration(classes = {AppConfiguration.class})
+
 @Slf4j
+@ContextConfiguration(classes = {AppConfiguration.class})
 public class DistanceServiceStepDefs {
 
     Customer.CustomerBuilder builder;

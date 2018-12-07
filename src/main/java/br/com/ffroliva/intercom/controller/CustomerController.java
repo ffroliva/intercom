@@ -16,18 +16,18 @@ import java.util.List;
  * Controller that controls de APIs related to customers
  * @author Flavio Oliva <a href="mailto:ffroliva@gmail.com">ffroliva@gmail.com</a>
  */
-@RestController("/customers")
+@RestController
 public class CustomerController {
 
     @Autowired
     CustomerService customerService;
 
-    @RequestMapping
+    @RequestMapping("/customers")
     public List<Customer> findCustomers() {
         return customerService.findCustomers();
     }
 
-    @RequestMapping("/within-distance/{distance}")
+    @RequestMapping("/customers/within-distance/{distance}")
     public List<CustomerDto> findCustomersWithinDistance(@PathVariable(value = "distance") String distance) {
         List<Customer> customers = customerService.findCustomers();
         return customerService.findCustomerWithinDistance(
