@@ -16,6 +16,8 @@ public class CustomerConverter {
         return CustomerDto.builder()
                 .id(customer.getId())
                 .name(customer.getName())
+                .distance(customer.getDistance())
+                .unit(customer.getDistanceUnit().toString())
                 .build();
     }
 }

@@ -1,5 +1,7 @@
 package br.com.ffroliva.intercom.dto;
 
+import br.com.ffroliva.intercom.model.enums.DistanceUnitEnum;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,6 +12,10 @@ import lombok.Data;
 @Data
 @Builder
 public class CustomerDto {
+    @JsonProperty("user_id")
     private Integer id;
     private String name;
+    private double distance;
+    @JsonProperty("distance_unit")
+    private String unit;
 }

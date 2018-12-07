@@ -37,6 +37,8 @@ public class DistanceServiceImpl implements DistanceService {
                 customer.getLatitude(),
                 customer.getLongitude(),
                 unit);
+        customer.setDistance(dist);
+        customer.setDistanceUnit(unit);
         log.info(String.format("%s -> Calculated Distance: %.4f", customer.toString(), dist));
         return dist;
     }

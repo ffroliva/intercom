@@ -1,7 +1,9 @@
 package br.com.ffroliva.intercom.model;
 
+import br.com.ffroliva.intercom.model.enums.DistanceUnitEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.springframework.data.annotation.Transient;
 
 /**
  * Classe representing the customer's data model.
@@ -21,7 +23,18 @@ public class Customer implements Comparable<Customer> {
     private String name;
     private double latitude;
     private double longitude;
+    @Transient
+    private double distance;
+    @JsonProperty("distance_unit")
+    @Transient
+    private DistanceUnitEnum distanceUnit;
 
+    /**
+     * Sort function which compares the current customer instance with a given object.
+     *
+     * @param o object to be compared.
+     * @return return an int representing the order of the object in relation with the compared object.
+     */
     @Override
     public int compareTo(Customer o) {
         if (this.id < o.getId()) {

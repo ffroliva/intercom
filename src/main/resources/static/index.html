@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Intercom</title>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/app/app.css"/>
@@ -40,11 +40,11 @@
                 <p>Dublin's office Geo Location - <span class="bold">Latitude:</span> 53.339428 <span class="bold">Longitude:</span>
                     -6.257664</p>
                 <p><a href="" ng-click="vm.getAllCustomers()" class="btn btn-success btn-lg">Show customers</a></p>
-                <p><a href="" ng-click="vm.getCustumersWithinDistance()" class="btn btn-success btn-lg">Show customers within 100 km</a></p>
+                <p><a href="" ng-click="vm.getCustomersWithinDistance()" class="btn btn-success btn-lg">Show customers within 100 km</a></p>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" ng-if="customers">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
@@ -53,16 +53,20 @@
                         <tr>
                             <th>Id</th>
                             <th>Full Name</th>
-                            <th>Latitude</th>
-                            <th>Longitude</th>
+                            <th ng-if="customers[0].latitude">Latitude</th>
+                            <th ng-if="customers[0].longitude">Longitude</th>
+                            <th ng-if="customers[0].distance">Distance</th>
+                            <th ng-if="customers[0].distance_unit">Distance Unit</th>
                         </tr>
                         </thead>
                         <tbody ng-repeat="c in customers">
                         <tr>
                             <td>{{c.user_id}}</td>
                             <td>{{c.name}}</td>
-                            <td>{{c.latitude}}</td>
-                            <td>{{c.latitude}}</td>
+                            <td ng-if="c.latitude">{{c.latitude}}</td>
+                            <td ng-if="c.longitude">{{c.latitude}}</td>
+                            <td ng-if="c.distance">{{c.distance}}</td>
+                            <td ng-if="c.distance_unit">{{c.distance_unit}}</td>
                         </tr>
                         </tbody>
                     </table>
