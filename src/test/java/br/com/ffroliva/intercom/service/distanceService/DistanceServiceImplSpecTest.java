@@ -11,6 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
         features = "src/test/resources/br/com/ffroliva/intercom/service/distanceService.feature",
         plugin = {"pretty", "html:target/cucumber/distanceService"}
 )
-@ContextConfiguration(classes = AppConfiguration.class)
+@ContextConfiguration(classes = {AppConfiguration.class})
 public class DistanceServiceImplSpecTest {
 }
