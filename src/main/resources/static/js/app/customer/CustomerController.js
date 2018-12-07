@@ -1,11 +1,36 @@
 'use strict'
-var module = angular.module('app.controller', []);
-module.controller("CustomerController", ["$scope", "CustomerService",
-    function($scope, CustomerService) {
+app.controller("CustomerController", function CustomerController($scope, CustomerService) {
 
-        $scope.customers = [];
+        var vm = this;
+        // attributes
+        vm.customers = [];
+        // methods
+        vm.getAllCustomers = _getAllCustomers;
+        $scope.getCustomersWithinDistance = _getCustomersWithinDistance;
 
-        CustomerService.getAllCustomers().then(function(value) {
+        var _getAllCustomers = function() {
+            CustomerService.getAllCustomers().then(function(value) {
+                console.log(value.data);
+                $scope.customers = value.data;
+            }, function(reason) {
+                console.log("error occured");
+            }, function(value) {
+                console.log("no callback");
+            });
+        }
+
+        var _getCustomersWithinDistance = function() {
+            CustomerService.getCustomersWithinDistance(100).then(function(value) {
+                console.log(value.data);
+                $scope.customers = value.data;
+            }, function(reason) {
+                console.log("error occured");
+            }, function(value) {
+                console.log("no callback");
+            });
+        }
+
+        CustomerService.getCustomersWithinDistance().then(function(value) {
             console.log(value.data);
             $scope.customers = value.data;
         }, function(reason) {
@@ -13,5 +38,4 @@ module.controller("CustomerController", ["$scope", "CustomerService",
         }, function(value) {
             console.log("no callback");
         });
-
-]);
+});
