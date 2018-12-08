@@ -27,7 +27,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/home">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
             </ul>
         </div>
     </div>
@@ -63,9 +63,9 @@
                         <tr>
                             <td>{{c.user_id}}</td>
                             <td>{{c.name}}</td>
-                            <td ng-if="c.latitude">{{c.latitude}}</td>
+                            <td ng-if="c.latitude">{{c.latitude}}</td>git 
                             <td ng-if="c.longitude">{{c.latitude}}</td>
-                            <td ng-if="c.distance">{{c.distance}}</td>
+                            <td ng-if="c.distance">{{c.distance | number : 3}}</td>
                             <td ng-if="c.distance_unit">{{c.distance_unit}}</td>
                         </tr>
                         </tbody>
